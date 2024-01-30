@@ -25,7 +25,7 @@ public class ArrowController : MonoBehaviour
         //방향*속도*시간
         Vector3 movement = Vector3.down * 1 * Time.deltaTime;
         this.transform.Translate(movement);
-        Debug.LogFormat("y : {0}", this.transform.position.y); // 화살표의 위치 출력
+        //Debug.LogFormat("y : {0}", this.transform.position.y); // 화살표의 위치 출력
         // 현재 y좌표가 -3.5보다 작아졌을때 씬에서 제거
         if (this.transform.position.y <= -3.5f)
         {
@@ -45,7 +45,7 @@ public class ArrowController : MonoBehaviour
         float r2 = this.playerGo.GetComponent<PlayerController>().radius;
         float sumRadius = r1 + r2;
         if(distance < sumRadius){
-            //  Debug.LogFormat("충돌함: {0}, {1}", distance, sumRadius);
+            Debug.LogFormat("충돌함: {0}, {1}", distance, sumRadius);
             Destroy(this.gameObject);
 
             this.gameDirector.DecreaseHp();
