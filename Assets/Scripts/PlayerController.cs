@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 public class PlayerController : MonoBehaviour
@@ -20,7 +17,8 @@ public class PlayerController : MonoBehaviour
             Debug.Log("왼쪽 화살표 버튼 클릭");
             this.transform.Translate(-2, 0, 0);
         });
-        { }
+
+
         this.btnRight.onClick.AddListener(() =>
         {
             Debug.Log("오른쪽 화살표 버튼 클릭");
