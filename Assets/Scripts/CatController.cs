@@ -20,11 +20,12 @@ public class CatController : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
-
+            this.rbody.AddForce(-this.transform.right * this.force/10f); // 왼쪽방향키 누르면 왼쪽으로 이동
         }
 
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        if (Input.GetKeyDown(KeyCode.RightArrow))
         {
+            this.rbody.AddForce(this.transform.right * this.force/10f);// 오른쪽 방향키 누르면 왼쪽으로 이동
 
         }
     }
