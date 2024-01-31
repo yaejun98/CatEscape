@@ -32,20 +32,22 @@ public class CatController : MonoBehaviour
     void Update()
     {
         //스페이스바를 누르면 
-        
+        if (Mathf.Abs(rbody.velocity.y) < 0.01f)
+
+        {
             if (Input.GetKeyDown(KeyCode.Space))
             {
-            if (!hasSpace)
-            {
-                //힘을 가한다 
-                this.rbody.AddForce(this.transform.up * this.jumpForce);
-                //this.rbody.AddForce(Vector3.up * this.force);
-                if (Mathf.Abs(rbody.velocity.y) < 0.01f)
+                if (!hasSpace)
                 {
-                    hasSpace = false; // 다시 점프할 수 있도록 허용
+                    //힘을 가한다 
+                    this.rbody.AddForce(this.transform.up * this.jumpForce);
+                    //this.rbody.AddForce(Vector3.up * this.force);
+
+                        hasSpace = false; // 다시 점프할 수 있도록 허용
+
                 }
             }
-            
+
 
         }
         // -1, 0, 1 : 방향 
