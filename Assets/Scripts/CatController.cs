@@ -7,14 +7,21 @@ public class CatController : MonoBehaviour
     [SerializeField] private Rigidbody2D rbody;
     [SerializeField] private float moveForce = 100f;
     [SerializeField] private float jumpForce = 680f;
-
+    private Animator anim;
     [SerializeField]
     private ClimbCloudGameDirector gameDirector;
 
+    [SerializeField] private float speed = 1f; 
     private void Start()
     {
+        // this.gameObject.GetComponent<Animation>();
+        this.anim = this.GetComponent<Animator>(); // this 생략 가능
+        //anim.speed = moveForce * Time.deltaTime; 
+
         //this.gameDirector = GameObject.Find("GameDirector").GetComponent<ClimbCloudGameDirector>();
-        this.gameDirector = GameObject.FindAnyObjectByType<ClimbCloudGameDirector>();
+        //this.gameDirector = GameObject.FindAnyObjectByType<ClimbCloudGameDirector>();
+        // ? 
+
     }
 
     void Update()
@@ -58,6 +65,8 @@ public class CatController : MonoBehaviour
         {
             this.rbody.AddForce(this.transform.right * dirX * moveForce);
         }
+
+        anim.speed = Mathf.Abs(rbody.velocity.x) / speed; 
 
         this.gameDirector.UpdateVelocityText(this.rbody.velocity);
     }
