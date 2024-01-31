@@ -77,7 +77,10 @@ public class CatController : MonoBehaviour
         
         // Debug.Log(this.transform.position);
         
-        
+        float clampX = Mathf.Clamp(this.transform.position.x, -2.39f, 2.35f);
+        Vector3 pos = this.transform.position;
+        pos.x = clampX;
+        this.transform.position = pos;
 
 
     }
