@@ -16,6 +16,8 @@ public class CatController : MonoBehaviour
 
     private Animator anim;
 
+    private bool hasSpace = false;
+
     private void Start()
     {
         //this.gameObject.GetComponent<Animation>();
@@ -24,20 +26,28 @@ public class CatController : MonoBehaviour
 
         //this.gameDirector = GameObject.Find("GameDirector").GetComponent<ClimbCloudGameDirector>();
         //this.gameDirector = GameObject.FindAnyObjectByType<ClimbCloudGameDirector>();
-   
+
     }
 
     void Update()
     {
-        
         //스페이스바를 누르면 
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            //힘을 가한다 
-            this.rbody.AddForce(this.transform.up * this.jumpForce);
-            //this.rbody.AddForce(Vector3.up * this.force);
-        }
+        
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+            if (!hasSpace)
+            {
+                //힘을 가한다 
+                this.rbody.AddForce(this.transform.up * this.jumpForce);
+                //this.rbody.AddForce(Vector3.up * this.force);
+                if (Mathf.Abs(rbody.velocity.y) < 0.01f)
+                {
+                    hasSpace = false; // 다시 점프할 수 있도록 허용
+                }
+            }
+            
 
+        }
         // -1, 0, 1 : 방향 
         int dirX = 0;
         //왼쪽화살표키를 누르고 있는 동안에 
@@ -74,9 +84,9 @@ public class CatController : MonoBehaviour
         this.anim.speed = (Mathf.Abs(this.rbody.velocity.x) / 2f);
         this.gameDirector.UpdateVelocityText(this.rbody.velocity);
 
-        
+
         // Debug.Log(this.transform.position);
-        
+
         float clampX = Mathf.Clamp(this.transform.position.x, -2.39f, 2.35f);
         Vector3 pos = this.transform.position;
         pos.x = clampX;
@@ -88,17 +98,17 @@ public class CatController : MonoBehaviour
     // Trigger 모드 일경우 충돌 판정을 해주는 이벤트 함수
     private bool hasEntered = false;
     private void OnTriggerEnter2D(Collider2D collision)
-    {   
+    {
         if (!hasEntered)
         {
             Debug.LogFormat("OnTriggerEnter2D: {0}", collision);
             SceneManager.LoadScene("ClimbCloudClear");
             hasEntered = true; // 한 번 이벤트가 발생하면 이 변수를 true로 설정하여 두 번 이상 호출되지 않도록 함
-           
+
         }
-       
+
     }
-    
-   
+
+
 
 }
