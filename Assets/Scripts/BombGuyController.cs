@@ -12,7 +12,7 @@ public class BombGuyController : MonoBehaviour
     
     private void Start()
     {
-
+        this.anim.SetInteger("State", 0);
         // [SerializeField] Animator anim; 를 쓰지 않는다면
 
         //Transform animTransform = this.transform.Find("anim");
