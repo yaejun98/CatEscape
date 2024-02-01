@@ -4,13 +4,16 @@ using UnityEngine;
 
 public class CaptainController : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public enum State
+    {
+        Idle, Hit, Die
+    }
     void Start()
     {
         
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
         
