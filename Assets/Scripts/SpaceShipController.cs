@@ -5,7 +5,7 @@ using UnityEngine;
 public class SpaceShipController : MonoBehaviour
 {
     [SerializeField] private float speed = 1f; // 이동 속도
-
+    private BulletGenerator bulletGenerator;
     void Update()
     {
         // 키보드 입력을 받아 이동 및 회전 처리
@@ -35,7 +35,7 @@ public class SpaceShipController : MonoBehaviour
         // 새로운 위치 적용
         transform.position = newPosition;
 
-        Debug.LogFormat("현재 좌표 {0}", transform.position);
+        //Debug.LogFormat("현재 좌표 {0}", transform.position);
         //우주선이 화면에서나가면 제거 Destroy
     }
 }
