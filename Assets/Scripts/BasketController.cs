@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class BasketController : MonoBehaviour
    
@@ -59,9 +60,9 @@ public class BasketController : MonoBehaviour
             this.audioSource.PlayOneShot(this.bombSfx);
             Destroy(other.gameObject);
             gameDirector.DecreaseScore();
-
         }
 
+        gameDirector.GameOver();
         
     }
 }

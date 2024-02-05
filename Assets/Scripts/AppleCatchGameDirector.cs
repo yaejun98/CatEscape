@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 public class AppleCatchGameDirector : MonoBehaviour
 {
     [SerializeField] public Text scoreText;
@@ -24,4 +25,13 @@ public class AppleCatchGameDirector : MonoBehaviour
             scoreText.text = score.ToString();
         }
     }
+    
+    public void GameOver()
+    {
+        if(this.score <= -300)
+        {
+            SceneManager.LoadScene("AppleCatchRetry");
+        }
+    }
+
 }
