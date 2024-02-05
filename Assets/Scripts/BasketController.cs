@@ -10,10 +10,11 @@ public class BasketController : MonoBehaviour
     [SerializeField] private AudioClip bombSfx;
 
     private AudioSource audioSource;
-
+    private AppleCatchGameDirector gameDirector;
     private void Start()
     {
         this.audioSource = this.GetComponent<AudioSource>();
+        this.gameDirector = FindObjectOfType<AppleCatchGameDirector>();
     }
 
     void Update()
@@ -38,7 +39,6 @@ public class BasketController : MonoBehaviour
                 int x = Mathf.RoundToInt(hit.point.x);
                 int z = Mathf.RoundToInt(hit.point.z);
                 this.transform.position = new Vector3(x, 0, z);
-
             }
         }
     }
@@ -51,12 +51,14 @@ public class BasketController : MonoBehaviour
             Debug.Log("득점");
             this.audioSource.PlayOneShot(this.appleSfx); // 한번만 실행한다.
             Destroy(other.gameObject);
+            gameDirector.AddScore();
         }
         else if(other.gameObject.tag == "Bomb")
         {
             Debug.Log("감점");
             this.audioSource.PlayOneShot(this.bombSfx);
             Destroy(other.gameObject);
+            gameDirector.DecreaseScore();
 
         }
 
