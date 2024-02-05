@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class GameSceneMain : MonoBehaviour
+public class GameSceneMains : MonoBehaviour
 {
     [SerializeField] private Text textHp;
     [SerializeField] private Button btnLoadScene;
