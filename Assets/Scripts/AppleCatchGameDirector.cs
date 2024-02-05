@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class AppleCatchGameDirector : MonoBehaviour
 {
     [SerializeField] private float score;
